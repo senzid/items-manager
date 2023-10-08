@@ -1,0 +1,33 @@
+.modal-overlay {
+    z-index: 10;
+    width: 100vw;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1s;
+}
+
+.modal-box {
+    display: block;
+    background: white;
+    width: fit-content;
+    // height: fit-content;
+    max-height: 70%;
+    padding: 2rem;
+    border-radius: 1rem;
+    color:black;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }

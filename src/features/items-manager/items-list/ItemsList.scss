@@ -1,0 +1,16 @@
+.items-container {
+    display: grid;
+    place-items: center;
+    gap: 1rem;
+}
+
+.footer-button {
+    display: flex;
+    margin: 2em 1em;
+    width: 100%;
+    justify-content: center;
+    button {
+      height: 3em;
+      width: 80% 
+    }
+}

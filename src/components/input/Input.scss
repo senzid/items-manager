@@ -1,0 +1,39 @@
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex:1;
+}
+
+.input-text {
+  max-height: 3em;
+  flex:1;
+  border-radius: 10px;
+  border: 0;
+  background-color: #e1e1e1;
+  color: black;
+  padding: 5px;
+}
+
+.input-icon {
+  margin: -5px 5px;
+  &.up {
+    color: #1f1f1f;
+  }
+  &.down {
+    color: #efefef;
+  }
+  &-container {
+    position: absolute;
+    right: 5px;
+    display:flex;
+    flex-direction: column;
+    padding: 0px;
+    background-color: transparent;
+    border: 0;
+    &:hover {
+      // cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+}

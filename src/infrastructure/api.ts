@@ -1,4 +1,4 @@
-function getSuspender (promise: any): any {
+export function getSuspender (promise: any): any {
   let status = 'pending'
   let response: any
 
@@ -25,13 +25,4 @@ function getSuspender (promise: any): any {
   }
 
   return { read }
-}
-
-export function fetchData (url: string): any {
-  console.log(url)
-  const promise = fetch(url)
-    .then((response) => response.json())
-    .then((data) => data)
-
-  return getSuspender(promise)
 }

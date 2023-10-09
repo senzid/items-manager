@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react'
-import { fetchData } from '../infrastructure/api.ts'
+import { fetchData } from '../services/items-manager/get-items.ts'
 // import MyComponent from './MyComponent.tsx'
 const ItemsList = lazy(async () => await import('../features/items-manager/items-list/ItemsList.tsx'))
 

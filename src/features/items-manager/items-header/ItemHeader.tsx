@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Modal } from '../../../components/modal/Modal.tsx'
 import './ItemHeader.scss'
 import { Button } from '../../../components/button/Button.tsx'
@@ -30,6 +30,7 @@ type SortProps = {
 
 export const ItemHeader: React.FC<HeaderType> = ({ favorites,handleFavorites,sortList,handleFilter }) => {
   const [isOpen, setisOpen] = useState(false);
+  const [filteredFavorites, setFilteredFavorites] = useState(favorites);
   const initialSorted: SortProps = {
     title:undefined,
     email:undefined,
@@ -37,6 +38,10 @@ export const ItemHeader: React.FC<HeaderType> = ({ favorites,handleFavorites,sor
     price: undefined
   }
   const [sortItems,setSortItems] = useState<SortProps>(initialSorted)
+
+  useEffect(()=>{
+    setFilteredFavorites(favorites)
+  },[favorites])
 
   const handleSort = (filter:string) => {
     let sortElement:undefined|'up'|'down';
@@ -55,7 +60,13 @@ export const ItemHeader: React.FC<HeaderType> = ({ favorites,handleFavorites,sor
     setisOpen(!isOpen);
   };
 
-
+  const handleFavoriteFilter = (type:string,filter:string) => {
+    const list = favorites
+      type = 'title';
+      if (filter==="") return setFilteredFavorites([...list])
+      const newFavoritesList = list.filter((item:any)=>item[type].trim().toLowerCase().includes(filter.trim().toLowerCase()))
+      setFilteredFavorites([...newFavoritesList]) 
+  }
 
   return (
     <>
@@ -70,8 +81,8 @@ export const ItemHeader: React.FC<HeaderType> = ({ favorites,handleFavorites,sor
       <Modal toggle={toggle} isOpen={isOpen}>
         <div className='items-container'>
           <h2>Favorites</h2>
-          <Input key="fav-title" placeholder='Favorite title' handleSort={handleSort} sorted={sortItems.title} handleFilter={handleFilter}/>
-          {favorites.map((item:ItemType) => {
+          <Input key="fav-title" placeholder='Favorite title' handleSort={handleSort} sorted={sortItems.title} handleFilter={handleFavoriteFilter}/>
+          {filteredFavorites.map((item:ItemType) => {
             return <FavoriteCard handleFavorites={handleFavorites} key={`favorite_${item.title.trim()}`} item={item}/>
           })}
         </div>

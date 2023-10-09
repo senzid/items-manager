@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { Button } from '../../button/Button'
 import './ItemCard.scss'
 
@@ -15,7 +16,7 @@ type CardType = {
   isFavorite: boolean
 }
 
-export const ItemCard: React.FC<CardType>=({item,isFavorite,handleFavorites})=> {
+export const ItemCard: React.FC<CardType>=memo(({item,isFavorite,handleFavorites})=> {
   return (
     <article className="card-container">
         <div className='card-img'>
@@ -32,4 +33,4 @@ export const ItemCard: React.FC<CardType>=({item,isFavorite,handleFavorites})=> 
         </div>
     </article>
   );
-}
+})

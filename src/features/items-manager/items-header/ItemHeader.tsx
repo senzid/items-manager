@@ -71,9 +71,9 @@ export const ItemHeader: React.FC<HeaderType> = ({ favorites,handleFavorites,sor
         <div className='items-container'>
           <h2>Favorites</h2>
           <Input key="fav-title" placeholder='Favorite title' handleSort={handleSort} sorted={sortItems.title} handleFilter={handleFilter}/>
-        {favorites.map((item:ItemType) => {
+          {favorites.map((item:ItemType) => {
             return <FavoriteCard handleFavorites={handleFavorites} key={`favorite_${item.title.trim()}`} item={item}/>
-            })}
+          })}
         </div>
       </Modal>
     </>

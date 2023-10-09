@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { ItemCard } from '../../../components/cards/item-card/ItemCard.tsx'
 import './ItemsList.scss'
 import { ItemHeader } from '../items-header/ItemHeader.tsx'
@@ -21,7 +21,7 @@ const ItemList: React.FC<{ data: any }> = ({ data }: { data: any }) => {
     return favorites.find((item:ItemType)=>item.title === e)?true:false;
   }
 
-  const handleFavorites = (e:string) => {
+  const handleFavorites = useCallback((e:string) => {
     const isFavorite = isItemFavorite(e)
     console.log('isFavorite',isFavorite);
     if (isFavorite) {
@@ -31,9 +31,9 @@ const ItemList: React.FC<{ data: any }> = ({ data }: { data: any }) => {
       const selectedItem:ItemType[] = items.filter((item:ItemType)=>item.title === e);
       setFavorites([...favorites,...selectedItem])
     }
-  }
+  },[favorites])
 
-  const sortList = (filter:any,sortElement:any) => {
+  const sortList = useCallback((filter:any,sortElement:any) => {
     const isFavorite = filter ==="Favorite title"? true:false;
     if (isFavorite && favorites.length===0) return
     filter = isFavorite? 'title':filter
@@ -70,7 +70,7 @@ const ItemList: React.FC<{ data: any }> = ({ data }: { data: any }) => {
     } else {
       setItems([...list])
     }
-  }
+  },[items,favorites])
 
   const handleFilter = (type:string,filter:string) => {
     const isFavorite = type ==="Favorite title"? true:false;

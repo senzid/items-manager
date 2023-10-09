@@ -13,6 +13,7 @@ const config: Config = {
   // process `*.tsx` files with `ts-jest`
   },
   moduleNameMapper: {
+    ".(css|less|scss)$": "identity-obj-proxy",
     '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/test/__ mocks __/fileMock.js'
   }
 }

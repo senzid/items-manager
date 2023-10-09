@@ -18,16 +18,11 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src","jest.config.ts"],
   // "exclude": ["src/**/*.test.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
-
-// "exclude": [
-//   "dist",
-//   "node_modules",
-//   "src/**/*.test.tsx",
-//   "src/**/*.stories.tsx",
-// ]

@@ -1,3 +1,5 @@
+@import '/src/infrastructure/styles/colors';
+
 .header-container {
     position: sticky;
     display: flex;
@@ -7,7 +9,7 @@
     align-items: center;
     justify-content: space-around;
     top: 0;
-    background-color: #ffffff;
+    background-color: $white;
     padding: 15px 30px;
     button {
         flex:1

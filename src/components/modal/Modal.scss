@@ -1,3 +1,5 @@
+@import '/src/infrastructure/styles/colors';
+
 .modal-overlay {
     z-index: 10;
     width: 100vw;
@@ -14,11 +16,11 @@
 
 .modal-box {
     display: block;
-    background: white;
+    background: $white;
     width: fit-content;
     // height: fit-content;
     max-height: 70%;
-    padding: 2rem;
+    padding: 1em 2em 2rem;
     border-radius: 1rem;
     color:black;
     overflow-y: scroll;

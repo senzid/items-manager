@@ -1,3 +1,5 @@
+@import '/src/infrastructure/styles/colors';
+
 .base-button,.close-button {
     border: 0;
     border-radius: 50px;
@@ -11,10 +13,10 @@
     font-family: inherit;
     white-space: nowrap;
     cursor: pointer;
-      color: white;
-      background-color: #1a1a1a;
+      color: $white;
+      background-color: $black-medium;
       transition: background-color 0.25s;
       &:hover {
-        background-color: #3f3f3f;
+        background-color: $gray;
       }
 }

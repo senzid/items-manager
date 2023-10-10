@@ -1,3 +1,5 @@
+@import '/src/infrastructure/styles/colors';
+
 .input-container {
   position: relative;
   display: flex;
@@ -10,18 +12,16 @@
   flex:1;
   border-radius: 10px;
   border: 0;
-  background-color: #e1e1e1;
-  color: black;
+  background-color: $grayish-white;
+  color: $black;
   padding: 5px;
 }
 
 .input-icon {
   margin: -5px 5px;
-  &.up {
-    color: #1f1f1f;
-  }
-  &.down {
-    color: #efefef;
+  color: $grayish-white-hard;
+  :hover {
+    color: $black-light;
   }
   &-container {
     position: absolute;
@@ -32,8 +32,7 @@
     background-color: transparent;
     border: 0;
     &:hover {
-      // cursor: pointer;
-      transform: scale(1.1);
+      transform: scale(1.3);
     }
   }
 }

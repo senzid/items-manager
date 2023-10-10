@@ -1,4 +1,4 @@
-import { getSuspender } from "../../infrastructure/api"
+import { getSuspender } from "../../infrastructure/api/api"
 
 export function fetchData (url: string): any {
   const promise = fetch(url)

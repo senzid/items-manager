@@ -40,7 +40,7 @@ Here are the page files, but they contain no logic. They are like the page files
 Contains API generic functions consumed by features. It's a adapter layer. If in the future we want change the fetching data method to axios (or whatever), or we need to fetch data from GraphQL, for example, it will be easy to change. Moreover if api response or endpoints changes it is easy to change too.
 
 ### infraestructure
-It isn't a Pandora's box. At this moment only contains the implementation of api call, but we can add custom css files for generic styles, a localstorage file, traductions, and generic functions used in all project for example.
+It isn't a Pandora's box. At this moment only contains the implementation of api call and custom css files for generic styles, but we can add a localstorage file, traductions, and generic functions used in all project for example.
 
 # Legal Disclaimer
 The API used in this project is property of ©Wallapop and must be used with their consent.

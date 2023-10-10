@@ -1,3 +1,5 @@
+@import '/src/infrastructure/styles/colors';
+
 .favcard {
     display: flex;
     flex-direction: column;
@@ -24,7 +26,7 @@
             right: 10px;
             top: 10px;
             border-radius: 50%;
-            background-color: black;
+            background-color: $black;
             color: white;
             display: flex;
             align-items: center;
@@ -32,7 +34,7 @@
             width: 25px;
             justify-content: center;
             &:hover {
-                background-color: #1f1f1f;
+                background-color: $black-light;
             }
         }
     }

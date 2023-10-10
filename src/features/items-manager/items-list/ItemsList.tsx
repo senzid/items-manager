@@ -23,7 +23,6 @@ const ItemList: React.FC<{ data: any }> = ({ data }: { data: any }) => {
 
   const handleFavorites = useCallback((e:string) => {
     const isFavorite = isItemFavorite(e)
-    console.log('isFavorite',isFavorite);
     if (isFavorite) {
       const newFavorites:ItemType[] = favorites.filter((item:ItemType)=>item.title !== e);
       setFavorites([...newFavorites])
@@ -41,12 +40,12 @@ const ItemList: React.FC<{ data: any }> = ({ data }: { data: any }) => {
     const convertToNumber = filter === 'price'? true:false;
     if (sortElement==='down') {
       list.sort((a:any, b:any) => {
-        const elementA = convertToNumber? Number(a[filter]) : a[filter].toUpperCase();
-        const elementB = convertToNumber? Number(b[filter]) : b[filter].toUpperCase();
-        if (elementA > elementB) {
+        const itemA = convertToNumber? Number(a[filter]) : a[filter].toUpperCase();
+        const itemB = convertToNumber? Number(b[filter]) : b[filter].toUpperCase();
+        if (itemA > itemB) {
           return -1;
         }
-        if (elementA < elementB) {
+        if (itemA < itemB) {
           return 1;
         }
         return 0;
@@ -54,12 +53,12 @@ const ItemList: React.FC<{ data: any }> = ({ data }: { data: any }) => {
       
     } else {
       list.sort((a:any, b:any) => {
-        const elementA = convertToNumber? Number(a[filter]) : a[filter].toUpperCase();
-        const elementB = convertToNumber? Number(b[filter]) : b[filter].toUpperCase();
-        if (elementA < elementB) {
+        const itemA = convertToNumber? Number(a[filter]) : a[filter].toUpperCase();
+        const itemB = convertToNumber? Number(b[filter]) : b[filter].toUpperCase();
+        if (itemA < itemB) {
           return -1;
         }
-        if (elementA > elementB) {
+        if (itemA > itemB) {
           return 1;
         }
         return 0;
@@ -72,9 +71,9 @@ const ItemList: React.FC<{ data: any }> = ({ data }: { data: any }) => {
     }
   },[items,favorites])
 
-  const handleFilter = (type:string,filter:string) => {
+  const handleFilter = useCallback((type:string,filter:string) => {
     const isFavorite = type ==="Favorite title"? true:false;
-    const list = isFavorite ? favorites : data.items
+    const list = isFavorite ? favorites : data.items.slice(0, itemsDisplayed)
     if (isFavorite) {
       type = 'title';
       if (filter==="") return setFavorites([...list])
@@ -85,7 +84,7 @@ const ItemList: React.FC<{ data: any }> = ({ data }: { data: any }) => {
       const newItemsList = list.filter((item:any)=>item[type].trim().toLowerCase().includes(filter.trim().toLowerCase()))
       setItems([...newItemsList])
     }
-  }
+  },[items,favorites])
 
   const handleShowMore = () => {
     if (itemsDisplayed>25)return
@@ -96,12 +95,12 @@ const ItemList: React.FC<{ data: any }> = ({ data }: { data: any }) => {
   return (
     <>
       <ItemHeader favorites={favorites} handleFavorites={handleFavorites} sortList={sortList} handleFilter={handleFilter} />
-      <div className='items-container'>
+      <section className='items-container'>
         {items.map((item:ItemType) => {
           const isFavorite =isItemFavorite(item.title)
           return <ItemCard isFavorite={isFavorite} handleFavorites={handleFavorites} key={`item_${item.title.trim()}`} item={item} />
         })}
-      </div>
+      </section>
       <div className='footer-button'>
         <Button onClick={handleShowMore}>View More</Button>
       </div>

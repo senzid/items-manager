@@ -1,9 +1,9 @@
 import { Suspense, lazy } from 'react'
 import { fetchData } from '../services/items-manager/get-items.ts'
-// import MyComponent from './MyComponent.tsx'
+import apiPaths from '../services/apiPaths.ts'
 const ItemsList = lazy(async () => await import('../features/items-manager/items-list/ItemsList.tsx'))
 
-const apiData = fetchData('https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/items.json')
+const apiData = fetchData(apiPaths.ALLITEMS)
 
 const Home = (): JSX.Element => {
   const data = apiData.read()

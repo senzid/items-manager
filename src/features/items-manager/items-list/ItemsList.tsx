@@ -4,15 +4,8 @@ import './ItemsList.scss'
 import { ItemHeader } from '../items-header/ItemHeader.tsx'
 import { Button } from '../../../components/button/Button.tsx'
 import { useItemsDisplayed } from './useItemsDisplayed.ts'
-import { useHandleItems } from './useHandeItems.ts'
-
-type ItemType = {
-  title: string,
-  description: string,
-  price: string,
-  email: string,
-  image: string
-}
+import { useHandleItems } from './useHandleItems.ts'
+import { ItemType } from '../item-manager'
 
 const ItemList: React.FC<{ data: any }> = ({ data }: { data: any }) => {
   const {itemsDisplayed,addMoreItems} = useItemsDisplayed()

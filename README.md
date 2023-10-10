@@ -1,5 +1,5 @@
 # Getting Started
-This project is hosted in a public github repository and you can clone it. You can also see the website in this github page: [https://senzid.github.io/items-manager/].
+This project is hosted in a public github repository and you can clone it. You can also see the website in this page: [https://senzid.github.io/items-manager/].
 
 ## Available Scripts
 
@@ -37,7 +37,7 @@ This is the domain and application layer. **The most important part of our appli
 Here are the page files, but they contain no logic. They are like the page files of NEXTjs and only renders components from features folder.
 
 ### services
-Contains API generic functions consumed by features. It's a adapter layer. If in the future we want change the fetching data method to axios (or whatever), or we need to fetch data from GraphQL, for example, it will be easy to change. Moreover if api response changes it is easy to change too.
+Contains API generic functions consumed by features. It's a adapter layer. If in the future we want change the fetching data method to axios (or whatever), or we need to fetch data from GraphQL, for example, it will be easy to change. Moreover if api response or endpoints changes it is easy to change too.
 
 ### infraestructure
 It isn't a Pandora's box. At this moment only contains the implementation of api call, but we can add custom css files for generic styles, a localstorage file, traductions, and generic functions used in all project for example.

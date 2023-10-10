@@ -1,50 +1,23 @@
-import { useEffect, useState } from 'react'
 import { Modal } from '../../../components/modal/Modal.tsx'
 import './ItemHeader.scss'
 import { Button } from '../../../components/button/Button.tsx'
 import { FavoriteCard } from '../../../components/cards/favorite-card/FavoriteCard.tsx'
 import { Input } from '../../../components/input/Input.tsx'
-
-
-type ItemType = {
-  title: string,
-  description: string,
-  price: string,
-  email: string,
-  image: string
-}
-
-type HeaderType = {
-favorites: ItemType[],
-handleFavorites:(e:string)=>void,
-handleFilter:(type:string,filter:string)=>void,
-sortList:(input:string,type:string)=>void
-}
-
-type SortProps = {
-  title:undefined | 'up' | 'down',
-  email:undefined | 'up' | 'down',
-  description:undefined | 'up' | 'down',
-  price: undefined | 'up' | 'down'
-}
+import { useHandleFavorites } from './useHandleFavorites.ts'
+import { SortProps, ItemType, HeaderType, SortTypesProps } from '../item-manager'
 
 export const ItemHeader: React.FC<HeaderType> = ({ favorites,handleFavorites,sortList,handleFilter }) => {
-  const [isOpen, setisOpen] = useState(false);
-  const [filteredFavorites, setFilteredFavorites] = useState(favorites);
+  
+  const {filteredFavorites,sortItems,updateSortedItems,filterFavorites,isModalOpen,toggleModal} = useHandleFavorites(favorites)
   const initialSorted: SortProps = {
     title:undefined,
     email:undefined,
     description:undefined,
     price: undefined
   }
-  const [sortItems,setSortItems] = useState<SortProps>(initialSorted)
-
-  useEffect(()=>{
-    setFilteredFavorites(favorites)
-  },[favorites])
 
   const handleSort = (filter:string) => {
-    let sortElement:undefined|'up'|'down';
+    let sortElement:SortTypesProps;
     let sortedItems = initialSorted
     if (sortItems[filter as keyof SortProps] === undefined) {
       sortElement = 'up'
@@ -53,20 +26,12 @@ export const ItemHeader: React.FC<HeaderType> = ({ favorites,handleFavorites,sor
     }
     sortedItems[filter as keyof SortProps] = sortElement;
     sortList(filter,sortElement)
-    setSortItems({...sortItems,...sortedItems})
+    updateSortedItems({...sortedItems})
   }
 
-  const toggle = () => {
-    setisOpen(!isOpen);
-  };
+  const handleFavoriteFilter = filterFavorites;
 
-  const handleFavoriteFilter = (type:string,filter:string) => {
-    const list = favorites
-      type = 'title';
-      if (filter==="") return setFilteredFavorites([...list])
-      const newFavoritesList = list.filter((item:any)=>item[type].trim().toLowerCase().includes(filter.trim().toLowerCase()))
-      setFilteredFavorites([...newFavoritesList]) 
-  }
+  const toggle = toggleModal;
 
   return (
     <>
@@ -78,7 +43,7 @@ export const ItemHeader: React.FC<HeaderType> = ({ favorites,handleFavorites,sor
         <Button onClick={toggle}>Show Favorites</Button>
       </div>
      
-      <Modal toggle={toggle} isOpen={isOpen}>
+      <Modal toggle={toggle} isOpen={isModalOpen}>
         <div className='items-container'>
           <h2>Favorites</h2>
           <Input key="fav-title" placeholder='Favorite title' handleSort={handleSort} sorted={sortItems.title} handleFilter={handleFavoriteFilter}/>

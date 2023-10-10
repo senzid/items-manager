@@ -12,11 +12,14 @@ interface InputProps {
 
 export const Input: React.FC<InputProps> = (props) => {
   const {placeholder,sorted=undefined,handleSort,handleFilter} = props
-  const isUpLighted = sorted==='up'?true:false
-  const isBottomLighted = sorted==='down'?true:false;
+  const handleUserSearch = (e:React.ChangeEvent<HTMLInputElement>) => {
+    handleFilter(placeholder,e.target.value)
+  }
+  let isUpLighted = sorted==='up'?true:false
+  let isBottomLighted = sorted==='down'?true:false;
   return (
     <div className='input-container'>
-      <input className='input-text' placeholder={placeholder} onChange={(e)=>handleFilter(placeholder,e.target.value)}/>
+      <input className='input-text' placeholder={placeholder} onChange={(event)=>handleUserSearch(event)}/>
       <button onClick={()=>handleSort(placeholder)} className='input-icon-container'>
         <FaSortUp className={`input-icon ${isUpLighted?'up':'down'}`} />
         <FaSortDown className={`input-icon ${isBottomLighted?'up':'down'}`} />

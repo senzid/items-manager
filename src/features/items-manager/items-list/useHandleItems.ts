@@ -1,12 +1,5 @@
 import { useState } from 'react'
-
-type ItemType = {
-  title: string,
-  description: string,
-  price: string,
-  email: string,
-  image: string
-}
+import { ItemType } from '../item-manager';
 
 export const useHandleItems = (initialData:ItemType[]) => {
   const [items,setItems] = useState(initialData);

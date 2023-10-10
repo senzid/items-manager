@@ -28,7 +28,7 @@ This project is built in screaming architecture with hexagonal principles. It me
 For now only contains app.tsx file. But it's important to keep this folder if we wont to add redux or global context in the future, pagination or if we need load any content before home page appears.
 
 ### components
-Contains our generic components. In this folder we would create the components that we want to use. Even if we want import a component from 3rd party never import this directly where it is used because if we want to change the library in the future, we would only have to make changes in this file and not in all the project. In fact we could put this folder in features, because it will only be consumed by some module but for basic convetion remains separated.
+Contains our generic components. In this folder we would create the components that we want to use. Even if we want import a component from 3rd party never import it directly where it is used because if we want to change the library in the future, we would only have to make changes in this file and not in all the project. In fact we could put this folder in features, because it will only be consumed by some module but for basic convetion remains separated. The next steps if the project growns may be apply atomic design and separate atoms and molecules for mor clarity but currently all components are atoms and don't make sense do it.
 
 ### features 
 This is the domain and application layer. **The most important part of our application** as it contains the bussines logic. For example, to manage the list of items is bussines logic core. It doesn't matter which table or render method we use. If we want we could add Context in this folders easily.

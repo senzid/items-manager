@@ -20,7 +20,7 @@ export const ItemCard: React.FC<CardType>=memo(({item,isFavorite,handleFavorites
   return (
     <article className="card-container">
         <div className='card-img'>
-          <img src={item.image}/>
+          <img alt={`image of ${item.title}`} src={item.image}/>
         </div>
         <div className='card-content'>
           <div className='card-content-title'>

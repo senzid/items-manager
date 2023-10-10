@@ -17,7 +17,7 @@ export const Input: React.FC<InputProps> = (props) => {
   return (
     <div className='input-container'>
       <input className='input-text' placeholder={placeholder} onChange={(e)=>handleFilter(placeholder,e.target.value)}/>
-      <button  onClick={()=>handleSort(placeholder)} className='input-icon-container'>
+      <button onClick={()=>handleSort(placeholder)} className='input-icon-container'>
         <FaSortUp className={`input-icon ${isUpLighted?'up':'down'}`} />
         <FaSortDown className={`input-icon ${isBottomLighted?'up':'down'}`} />
       </button>

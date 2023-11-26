@@ -8,6 +8,7 @@ export const useHandleItems = (initialData:ItemType[]) => {
   const updateItems = (itemsNew:ItemType[]) => setItems([...itemsNew])
 
   const updateFavorites = (favoritesNew:ItemType[]) => setFavorites([...favorites,...favoritesNew])
+
   const resetFavorites = (favoritesNew:ItemType[]) => setFavorites([...favoritesNew])
 
   const isItemFavorite = (e:string) => {
@@ -26,6 +27,7 @@ export const useHandleItems = (initialData:ItemType[]) => {
   }
 
   const filterElements = (type:string,filter:string) => {
+    console.log(filter,type)
     const isFavorite = type ==="Favorite title"? true:false;
     const list = isFavorite ? favorites : initialData
     if (isFavorite) {
@@ -35,7 +37,15 @@ export const useHandleItems = (initialData:ItemType[]) => {
       resetFavorites(newFavoritesList)
     } else {
       if (filter==="") return updateItems(list)
-      const newItemsList = list.filter((item:any)=>item[type].trim().toLowerCase().includes(filter.trim().toLowerCase()))
+      let newItemsList
+      if (type==="price") {
+        console.log(list,filter)
+        newItemsList = list.filter((item:any)=>item.price.toString().startsWith(filter))
+      } else if (type === "category") {
+        newItemsList = list.filter((item:any)=>item[type].name.trim().toLowerCase().includes(filter.trim().toLowerCase()))
+      } else {
+        newItemsList = list.filter((item:any)=>item[type].trim().toLowerCase().includes(filter.trim().toLowerCase()))
+      }
       updateItems(newItemsList)
     }
   }

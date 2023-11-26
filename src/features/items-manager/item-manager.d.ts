@@ -2,17 +2,22 @@ export type SortTypesProps = undefined|'up'|'down'
 
 export type SortProps = {
   title: SortTypesProps,
-  email: SortTypesProps,
+  category: SortTypesProps,
   description: SortTypesProps,
   price: SortTypesProps
 }
 
 export type ItemType = {
+  id: number,
   title: string,
   description: string,
   price: string,
-  email: string,
-  image: string
+  images: string[],
+  category: {
+    id: number,
+    name: string,
+    image:string,
+  }
 }
 
 export type HeaderType = {

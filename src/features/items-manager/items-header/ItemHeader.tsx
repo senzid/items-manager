@@ -11,7 +11,7 @@ export const ItemHeader: React.FC<HeaderType> = ({ favorites,handleFavorites,sor
   const {filteredFavorites,sortItems,updateSortedItems,filterFavorites,isModalOpen,toggleModal} = useHandleFavorites(favorites)
   const initialSorted: SortProps = {
     title:undefined,
-    email:undefined,
+    category:undefined,
     description:undefined,
     price: undefined
   }
@@ -37,7 +37,7 @@ export const ItemHeader: React.FC<HeaderType> = ({ favorites,handleFavorites,sor
     <>
       <div className='header-container'>
         <Input key="title" placeholder='title' handleSort={handleSort} sorted={sortItems.title} handleFilter={handleFilter}/>
-        <Input key="email" placeholder='email' handleSort={handleSort} sorted={sortItems.email} handleFilter={handleFilter}/>
+        <Input key="category" placeholder='category' handleSort={handleSort} sorted={sortItems.category} handleFilter={handleFilter}/>
         <Input key="price" placeholder='price' handleSort={handleSort} sorted={sortItems.price} handleFilter={handleFilter}/>
         <Input key="description" placeholder='description' handleSort={handleSort} sorted={sortItems.description} handleFilter={handleFilter}/>
         <Button onClick={toggle}>Show Favorites</Button>

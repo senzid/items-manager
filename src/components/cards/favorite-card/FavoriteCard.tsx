@@ -3,7 +3,7 @@ import './FavoriteCard.scss'
 
 type FavoriteType = {
     title: string,
-    image: string
+    images: string[]
 }
 
 type CardType = {
@@ -12,12 +12,11 @@ type CardType = {
 }
 
 export const FavoriteCard: React.FC<CardType>=({item,handleFavorites})=> {
-  
   return (
     <article className='favcard'>
         <div className='favcard-img-container'>
           <Button className='close-button' onClick={()=>handleFavorites(item.title)}>X</Button>
-          <img src={item.image}/>
+          <img src={item.images[0]}/>
         </div>
         <div className='favcard-title'>
             <h2>{item.title}</h2>

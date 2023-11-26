@@ -9,7 +9,7 @@ import { ItemType } from '../item-manager'
 
 const ItemList: React.FC<{ data: any }> = ({ data }: { data: any }) => {
   const {itemsDisplayed,addMoreItems} = useItemsDisplayed()
-  const {items,updateItems,favorites,handleUpdateFavorites, filterElements, sortElements,isItemFavorite} = useHandleItems(data.items.slice(0, itemsDisplayed))
+  const {items,updateItems,favorites,handleUpdateFavorites, filterElements, sortElements,isItemFavorite} = useHandleItems(data.slice(0, itemsDisplayed))
 
   const handleFavorites = useCallback(handleUpdateFavorites,[favorites])
 
@@ -18,9 +18,9 @@ const ItemList: React.FC<{ data: any }> = ({ data }: { data: any }) => {
   const handleFilter = useCallback(filterElements,[items,favorites])
 
   const handleShowMore = () => {
-    if (itemsDisplayed>25)return
+    if (itemsDisplayed>data.length)return
     addMoreItems()
-    updateItems(data.items.slice(0, itemsDisplayed+5))
+    updateItems(data.slice(0, itemsDisplayed+5))
   }
 
   return (

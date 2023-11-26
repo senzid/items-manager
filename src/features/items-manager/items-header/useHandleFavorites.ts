@@ -5,7 +5,7 @@ export const useHandleFavorites = (favorites:any) => {
   
   const initialSorted: SortProps = {
     title:undefined,
-    email:undefined,
+    category:undefined,
     description:undefined,
     price: undefined
   }

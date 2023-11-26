@@ -1,5 +1,5 @@
 # Getting Started
-This project is hosted in a public github repository and you can clone it. You can also see the website in this page: [https://senzid.github.io/items-manager/].
+This project is hosted in a public github repository and you can clone it without restrictions.
 
 ## Available Scripts
 
@@ -43,4 +43,4 @@ Contains API generic functions consumed by features. It's a adapter layer. If in
 It isn't a Pandora's box. At this moment only contains the implementation of api call and custom css files for generic styles, but we can add a localstorage file, traductions, and generic functions used in all project for example.
 
 # Legal Disclaimer
-The API used in this project is property of ©Wallapop and must be used with their consent.
+The API used in this project is property of ©Platzy.

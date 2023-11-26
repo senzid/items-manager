@@ -1,4 +1,4 @@
-export function getSuspender (promise: any): any {
+export function getSuspender (promise: Promise<unknown>): { read: () => unknown; } {
   let status = 'pending'
   let response: any
 
@@ -13,7 +13,7 @@ export function getSuspender (promise: any): any {
     }
   )
 
-  const read = (): any => {
+  const read = (): unknown => {
     switch (status) {
       case 'pending':
         throw suspender
